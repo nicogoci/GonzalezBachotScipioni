@@ -7,14 +7,7 @@ public class PersonasBuscarForm {
 	private Long IdCiudadSeleccionada;
 	
 	
-//	private List<Ciudad> ciudades;
-//	public List<Ciudad> getCiudades() {
-//		return ciudades;
-//	}
-//	public void setCiudades(List<Ciudad> ciudades) {
-//		this.ciudades = ciudades;
-//	}
-	
+
 	public Long getDni() {
 		if(dni!=null && dni>0)
 			return dni;
