@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{index.titulo}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
   <body>
 	
     
    <div class="starter-template">
-        <h1>Ejemplo Spring Boot Web Thymeleaf </h1>
+        <h1 th:text="#{index.titulo}"></h1>
         <h2>
             <span th:text="'Bienvenido'"></span>
         </h2>

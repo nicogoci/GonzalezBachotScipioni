@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title><span th:text="#{pronostico.buscar.titulo}"/></title>
+    <title th:text="#{pronostico.buscar.titulo}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
@@ -55,7 +55,6 @@
 		</table>
 
 		  <table class="botones">
-		
 		      <tr>
 			      <td><input type="submit" name="action" value="Buscar" /></td>
 			      <td><input type="submit" name="action" value="Cancelar" /></td>
@@ -74,6 +73,7 @@
 			        <th ><label th:text="#{pronostico.porcentajeLluvia}" /></th>
 			        <th ><label th:text="#{pronostico.cantidadLluvia}" /></th>
 			        <th ><label th:text="#{pronostico.descripcion}" /></th>
+			        <th ><label th:text="#{pronostico.opciones}" /></th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -82,7 +82,7 @@
 				        <td th:text="${{p.fechaPronostico}}"></td>
 				        <td th:text="${{p.ciudad.nombre}}" ></td>
 				        <td th:text="${{p.porcentajeLluvia}}"></td>
-				        <td th:text="${{p.probabilidadLluvia}}" ></td>
+				       	<td th:text="${{p.idPronostico}}"></td>
 				        <td th:text="${{p.descripcion}}" ></td>
 				        <td>
 		                    <a th:href="@{/pronosticoEditar/{idPronostico}(idPronostico=${p.idPronostico})}" class="btn btn-primary">

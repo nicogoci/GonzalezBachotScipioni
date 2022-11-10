@@ -64,7 +64,7 @@ public class PronosticosBuscarController {
     	if(action.equals("Registrar"))
     	{
     		modelo.clear();
-    		return "redirect:/pronosticosEditar";
+    		return "redirect:/pronosticoEditar";
     	}
     		
     	return "redirect:/";
