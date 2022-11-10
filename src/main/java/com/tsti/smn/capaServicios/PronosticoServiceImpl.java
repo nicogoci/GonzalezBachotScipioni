@@ -32,9 +32,6 @@ public class PronosticoServiceImpl implements PronosticoService {
 			return repo.findAll();
 		else
 			return repo.findByFechaPronostico(filter.getFechaPronostico());
-		
-		
-		
 	}
 
 	@Override

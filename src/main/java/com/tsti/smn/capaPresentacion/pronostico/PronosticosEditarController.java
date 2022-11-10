@@ -21,7 +21,7 @@ import com.tsti.smn.pojos.Ciudad;
 import com.tsti.smn.pojos.Pronostico;
 
 @Controller
-@RequestMapping("/pronosticosEditar")
+@RequestMapping("/pronosticoEditar")
 public class PronosticosEditarController {
 	@Autowired
     private PronosticoService service;

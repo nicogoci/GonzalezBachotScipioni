@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title><span th:text="#{pronostico.editar.titulo}"/></title>
+    <title><span th:text="#{pronostico.editar.titulo}"></span></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
@@ -28,14 +28,14 @@
 
 	<div class="starter-template">
         <h1><span  th:text="#{empresa}" /></h1>
-         <h2 th:text="${formBean.idPronostico} ? #{pronostico.editar.titulo}: #{pronostico.registrar.titulo}" />
+         <h2 th:text="${formBean.idPronostico} ? #{pronostico.buscar.titulo}: #{pronostico.editar.titulo}" />
     </div>
     
 <form  th:action="@{/pronosticoEditar}" th:object="${formBean}" method="post">
 	<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
 	<table border="0" style="align-self: center;">
         <tr>
-            <td><label th:text="#{pronostico.porcentajeLLuvia}" /></td>
+            <td><label th:text="#{pronostico.porcentajeLluvia}" /></td>
             <td><input type="number" th:field="*{porcentajeLLuvia}" /></td>
             <td> <p th:if="${#fields.hasErrors('porcentajeLLuvia')}" th:errorclass="error" th:errors="*{porcentajeLLuvia}" /> </td>
             <!-- <td> 
@@ -45,7 +45,7 @@
 		   	</td>-->
         </tr>
         <tr>
-            <td><label th:text="#{pronostico.cantidadLLuvia}" /></td>
+            <td><label th:text="#{pronostico.cantidadLluvia}" /></td>
             <td><input type="number" th:field="*{cantidadLLuvia}" /></td> 
             <td> <p th:if="${#fields.hasErrors('cantidadLLuvia')}" th:errorclass="error" th:errors="*{cantidadLLuvia}" /> </td> 
         </tr>
