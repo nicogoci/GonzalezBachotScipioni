@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.tsti.smn.pojos.Persona;
 import com.tsti.smn.pojos.Pronostico;
 
 public class PronosticoForm {

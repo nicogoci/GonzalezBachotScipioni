@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tsti.smn.capaDaos.IPronosticoRepo;
 import com.tsti.smn.capaPresentacion.pronostico.PronosticosBuscarForm;
@@ -12,7 +13,7 @@ import com.tsti.smn.pojos.Pronostico;
 
 
 
-
+@Service
 public class PronosticoServiceImpl implements PronosticoService {
 
 	@Autowired
@@ -27,10 +28,10 @@ public class PronosticoServiceImpl implements PronosticoService {
 	@Override
 	public List<Pronostico> filter(PronosticosBuscarForm filter) {
 
-		if(filter.getFechaPronostico()==null && filter.getIdCiudadSeleccionada()==null)
+		if(filter.getFechaPronostico()==null )
 			return repo.findAll();
 		else
-			return repo.findByFechaPronosticoOrIdCiudadSeleccionada(filter.getFechaPronostico(),filter.getIdCiudadSeleccionada());
+			return repo.findByFechaPronostico(filter.getFechaPronostico());
 		
 		
 		

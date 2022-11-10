@@ -10,5 +10,5 @@ import com.tsti.smn.pojos.Pronostico;
 
 @Repository
 public interface IPronosticoRepo extends JpaRepository<Pronostico, Long>{
-	List<Pronostico> findByFechaPronosticoOrIdCiudadSeleccionada( Date fecha, Long id);
+	List<Pronostico> findByFechaPronostico( Date fecha);
 }
