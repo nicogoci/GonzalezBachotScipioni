@@ -17,6 +17,8 @@ public class Persona {
 	
 	private Date fechaNacimiento;
 	
+	private String mail;
+	
 	@ManyToOne
 	private Ciudad ciudad;
 	
@@ -51,5 +53,12 @@ public class Persona {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}	
 	
 }

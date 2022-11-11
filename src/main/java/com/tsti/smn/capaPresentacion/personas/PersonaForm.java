@@ -28,6 +28,9 @@ public class PersonaForm {
 	private Long idCiudad;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
+//	@NotNull
+//	@size(min=8, max=30)
+	private String mail;
 	
 	public PersonaForm() {
 		super();
@@ -39,6 +42,7 @@ public class PersonaForm {
 		this.dni=p.getDni();
 		this.idCiudad=p.getCiudad().getId();
 		this.fechaNacimiento=p.getFechaNacimiento();
+		this.mail=p.getMail();
 	}
 	public Long getDni() {
 		return dni;
@@ -64,7 +68,12 @@ public class PersonaForm {
 	public void setIdCiudad(Long idCiudad) {
 		this.idCiudad = idCiudad;
 	}
-	
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 	public Persona toPojo()
 	{
 		Persona p = new Persona();
@@ -73,6 +82,7 @@ public class PersonaForm {
 		p.setNombre(this.getNombre());
 		p.setDni(this.getDni());
 		p.setFechaNacimiento(this.getFechaNacimiento());
+		p.setMail(this.getMail());
 		return p;
 	}
 	public Date getFechaNacimiento() {

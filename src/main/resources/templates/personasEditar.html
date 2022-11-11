@@ -73,6 +73,11 @@
 				</select>
 			</td>
 		</tr>
+		        <tr>
+            <td><label th:text="#{persona.mail}" /></td>
+            <td><input type="text" th:field="*{mail}" placeholder="ejemplo@ejemplo.com"/></td> 
+            <td> <p th:if="${#fields.hasErrors('mail')}" th:errorclass="error" th:errors="*{mail}" /> </td> 
+        </tr>
         
          
   </table>
