@@ -50,37 +50,7 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public List<Persona> filter(PersonasBuscarForm filter) {
-		
-//		try {
-//			List<Persona> personas =new ArrayList<Persona>();
-//			Ciudad c1 = new Ciudad();
-//			c1.setId(1L);
-//			c1.setNombre("Santa Fe");
-//			
-//			Persona p1=new Persona();
-//			p1.setApellido("Perez");
-//			p1.setNombre("Juan");
-//			p1.setDni(111111L);
-//			p1.setFechaNacimiento(new SimpleDateFormat("dd/MM/yyyy").parse("01/05/2000"));
-//			p1.setCiudad(c1);
-//			personas.add(p1);
-//			
-//			Persona p2=new Persona();
-//			p2.setApellido("Fede");
-//			p2.setNombre("Sartore");
-//			p2.setDni(111111L);
-//			p2.setFechaNacimiento(new SimpleDateFormat("dd/MM/yyyy").parse("03/06/1990"));
-//			p2.setCiudad(c1);
-//			personas.add(p2);
-//			
-//			return personas;
-//			
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//			return new ArrayList<Persona>();
-//		}
-		
-//		//ver https://docs.spring.io/spring-data/jpa/docs/1.5.0.RELEASE/reference/html/jpa.repositories.html
+
 		if(filter.getNombre()==null && filter.getDni()==null)
 			return repo.findAll();
 		else
@@ -98,17 +68,7 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public Persona getPersonaById(Long idPersona) throws Exception {
-//		Ciudad c1 = new Ciudad();
-//		c1.setId(1L);
-//		c1.setNombre("Santa Fe");
-//		
-//		Persona p1=new Persona();
-//		p1.setApellido("Perez");
-//		p1.setNombre("Juan");
-//		p1.setDni(111111L);
-//		p1.setFechaNacimiento(new SimpleDateFormat("dd/MM/yyyy").parse("01/05/2000"));
-//		p1.setCiudad(c1);
-//		return p1; 
+
 		
 		Optional<Persona> p = repo.findById(idPersona);
 		
@@ -123,6 +83,11 @@ public class PersonaServiceImpl implements PersonaService {
 	public void deletePersonaByid(Long id) {
 		repo.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Persona> getPersonaByIdCiudad(Long idCiudad) throws Exception {
+		return repo.findByCiudadId(idCiudad);
 	}
 
 	

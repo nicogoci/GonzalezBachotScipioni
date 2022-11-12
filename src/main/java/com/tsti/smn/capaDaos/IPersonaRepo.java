@@ -11,4 +11,6 @@ import com.tsti.smn.pojos.Persona;
 public interface IPersonaRepo extends JpaRepository<Persona, Long> {
 	List<Persona> findByNombreOrDni( String nombre, Long dni);
 
+	List<Persona> findByCiudadId(Long idCiudad);
+
 }

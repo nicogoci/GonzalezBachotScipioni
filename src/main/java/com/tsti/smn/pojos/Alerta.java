@@ -1,5 +1,6 @@
 package com.tsti.smn.pojos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Alerta {
 	@ManyToOne
 	private Ciudad ciudad;
 	
-	private Date fechaAlerta;
+	private LocalDate fechaAlerta;
 	
 	private String descripcion;
 
@@ -29,12 +30,12 @@ public class Alerta {
 		this.ciudad = ciudad;
 	}
 
-	public Date getFechaAlerta() {
+	public LocalDate getFechaAlerta() {
 		return fechaAlerta;
 	}
 
-	public void setFechaAlerta(Date fechaAlerta) {
-		this.fechaAlerta = fechaAlerta;
+	public void setFechaAlerta(LocalDate fechaHoy) {
+		this.fechaAlerta = fechaHoy;
 	}
 
 	public String getDescripcion() {

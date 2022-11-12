@@ -7,10 +7,10 @@ import com.tsti.smn.pojos.Persona;
 
 public interface PersonaService {
 
-
+	
 
 	List<Persona> getAll();
-
+	
 	List<Persona> filter(PersonasBuscarForm filter);
 
 	/**
@@ -26,6 +26,7 @@ public interface PersonaService {
 	 * @throws Exception ante un error
 	 */
 	Persona getPersonaById(Long idPersona) throws Exception;
+	List<Persona> getPersonaByIdCiudad(Long idCiudad) throws Exception;
 
 	void deletePersonaByid(Long id);
 

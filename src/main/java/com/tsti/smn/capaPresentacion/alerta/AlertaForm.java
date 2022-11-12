@@ -9,9 +9,9 @@ public class AlertaForm {
 	
 	private Long idAlerta;
 	
-	private Ciudad ciudad;
+	private Long idCiudad;
 	
-	private Date fechaAlerta;
+	private String fechaAlerta;
 	
 	private String descripcion;
 	
@@ -21,12 +21,12 @@ public class AlertaForm {
 	}
 
 	public AlertaForm(Alerta a) {
-	super();
 	
-	this.idAlerta=a.getidAlerta();
-	this.ciudad=a.getCiudad();
-	this.fechaAlerta=a.getFechaAlerta();
-	this.descripcion=a.getDescripcion();
+		super();
+	
+		this.idAlerta=a.getidAlerta();
+		this.idCiudad=a.getCiudad().getId();
+		this.descripcion=a.getDescripcion();
 
 	
 	
@@ -41,21 +41,21 @@ public class AlertaForm {
 	}
 
 
-	public Ciudad getCiudad() {
-		return ciudad;
+	public Long getidCiudad() {
+		return idCiudad;
 	}
 
 
-	public void setCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
+	public void setidCiudad(Long idCiudad) {
+		this.idCiudad = idCiudad;
 	}
 
-	public Date getFechaAlerta() {
+	public String getFechaAlerta() {
 		return fechaAlerta;
 	}
 
 
-	public void setFechaAlerta(Date fechaAlerta) {
+	public void setFechaAlerta(String fechaAlerta) {
 		this.fechaAlerta = fechaAlerta;
 	}
 	public String getDescripcion() {
@@ -68,12 +68,10 @@ public class AlertaForm {
 	}
 
 		public Alerta toPojo() {
-		Alerta a = new Alerta();
-		a.setidAlerta(this.getIdAlerta());
-		a.setCiudad(this.getCiudad());
-		a.setFechaAlerta(this.getFechaAlerta());
-		a.setDescripcion(this.getDescripcion());
-		return a;
+			Alerta a = new Alerta();
+			a.setidAlerta(this.getIdAlerta());
+			a.setDescripcion(this.getDescripcion());
+			return a;
 		}
 }
 
