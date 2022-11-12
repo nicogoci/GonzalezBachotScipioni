@@ -32,9 +32,8 @@
         <h2>
             <span th:text="#{pronostico.buscar.titulo}"></span>
         </h2>
-    </div>
 	<form  th:action="@{/pronosticosBuscar}" th:object="${formBean}" method="post">
-		<table border="1" style="align-self: center;">
+		<table border="1">
 			
 		        <tr>
 		           <td><label th:text="#{pronostico.ciudad}" /></td>
@@ -93,5 +92,6 @@
 			    </tbody>
 		    </table>
 		</form>
+	</div>
 </body>
 </html>	
