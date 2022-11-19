@@ -10,14 +10,13 @@ import com.tsti.smn.pojos.Pronostico;
 
 public interface PronosticoService {
 
-	List<Pronostico> getAll();
-
 	List<Pronostico> filter(PronosticosBuscarForm filter);
 
-	void save(Pronostico pronostico);
+	void save(Pronostico p);
+
+	Pronostico getById(Long idPronostico);
+	
+	Pronostico findByCiudadIdAndFechaPronostico(Long idCiudadSeleccionada, java.util.Date fecha);
 	
 
-	Pronostico getPronosticoById(Long idPronostico) throws Exception;
-
-	void deletePronosticoByid(Long idPronostico);
 }

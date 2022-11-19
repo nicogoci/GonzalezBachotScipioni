@@ -1,5 +1,7 @@
 package com.tsti.smn.capaServicios;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,44 +20,41 @@ public class PronosticoServiceImpl implements PronosticoService {
 
 	@Autowired
 	IPronosticoRepo repo;
-	
-	@Override
-	public List<Pronostico> getAll() {
-	
-		return repo.findAll();
-	}
 
+	@Override
+	public Pronostico getById(Long idPronostico) {
+		return repo.findById(idPronostico).get();
+	}
 	@Override
 	public List<Pronostico> filter(PronosticosBuscarForm filter) {
-
-		if(filter.getFechaPronostico()==null )
-			return repo.findAll();
-		else
-			return repo.findByFechaPronostico(filter.getFechaPronostico());
-	}
+		Date fechaactual = new Date(System.currentTimeMillis());
+		List<Pronostico> vacia = new ArrayList<Pronostico>();
+		if(filter.getIdCiudadSeleccionada()==null && filter.getFechaPronostico()==null) {
+			return repo.findByFechaPronosticoAfter(fechaactual);
+		}else if (filter.getIdCiudadSeleccionada()!=null && filter.getFechaPronostico()==null) {
+			return repo.findByCiudadIdAndFechaPronosticoAfter(filter.getIdCiudadSeleccionada(),fechaactual);
+			}else if(filter.getIdCiudadSeleccionada()==null && filter.getFechaPronostico()!=null && filter.getFechaPronostico().after(fechaactual)) {
+				return repo.findByFechaPronosticoAfter(filter.getFechaPronostico());
+			}else {
+				return vacia;
+			}
+		}
+	
 
 	@Override
 	public void save(Pronostico pronostico) {
 		repo.save(pronostico);
 		
 	}
-
 	@Override
-	public Pronostico getPronosticoById(Long idPronostico) throws Exception {
-
+	public Pronostico findByCiudadIdAndFechaPronostico(Long idCiudadSeleccionada, Date fecha) {
 		
-		Optional<Pronostico> p = repo.findById(idPronostico);
-		
-		if(p!=null) {
-			return p.get();
-		} else {
-			throw new Exception("No existe la persona con el id="+idPronostico);
-		}
+		return repo.findByCiudadIdAndFechaPronostico(idCiudadSeleccionada, fecha);
 	}
 
-	@Override
-	public void deletePronosticoByid(Long id) {
-		repo.deleteById(id);
-		
-	}
+
+
+	
+	
+	
 }

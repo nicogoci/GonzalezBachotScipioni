@@ -23,8 +23,15 @@ public class Pronostico {
 	
 	private int porcentajeLluvia;
 	
-	private int cantidadLLuvia;
+	private int cantidadLluvia;
 	
+
+	@Override
+	public String toString() {
+		return "Pronostico [idPronostico=" + idPronostico + ", ciudad=" + ciudad + ", fechaPronostico="
+				+ fechaPronostico + ", descripcion=" + descripcion + ", porcentajeLluvia=" + porcentajeLluvia
+				+ ", cantidadLLuvia=" + cantidadLluvia + "]";
+	}
 
 	public Long getIdPronostico() {
 		return idPronostico;
@@ -66,12 +73,12 @@ public class Pronostico {
 		this.porcentajeLluvia = porcentajeLluvia;
 	}
 
-	public int getCantidadLLuvia() {
-		return cantidadLLuvia;
+	public int getCantidadLluvia() {
+		return cantidadLluvia;
 	}
 
-	public void setCantidadLLuvia(int cantidadLLuvia) {
-		this.cantidadLLuvia = cantidadLLuvia;
+	public void setCantidadLluvia(int cantidadLluvia) {
+		this.cantidadLluvia = cantidadLluvia;
 	}
 	
 	
