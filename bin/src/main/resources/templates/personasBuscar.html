@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title><span th:text="#{persona.buscar.titulo}"></span></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+
+	<div class="starter-template">
+        <h1><span  th:text="#{empresa}" /></h1>
+        <h2>
+            <span th:text="#{persona.buscar.titulo}"></span>
+        </h2>
+    </div>
+    
+<form  th:action="@{/personasBuscar}" th:object="${formBean}" method="post">
+	<table border="1" style="align-self: center;">
+		<tr>
+            <td><label th:text="#{persona.dni}" /></td>
+            <td><input type="number" th:field="*{dni}"  />
+             
+             </td>
+             	
+        </tr>
+        <tr>
+            <td><label th:text="#{persona.nombre}" /></td>
+            <td><input type="text" th:field="*{nombre}" /></td>
+            
+        </tr>
+       
+        
+         <tr>
+            <td><label th:text="#{persona.ciudad}" /></td>
+            <td>
+		        <select th:field="*{idCiudadSeleccionada}">
+					<option th:value="null" text="Seleccione una opción"></option>
+				    <option th:each="c : ${allCiudades}" 
+				          th:value="${c.id}" 
+				          th:text="${c.nombre}"></option>
+				</select>
+			</td>
+		</tr>
+  </table>
+  <table class="botones">
+
+      <tr>
+	      <td><input type="submit" name="action" value="Buscar" /></td>
+	      <td><input type="submit" name="action" value="Cancelar" /></td>
+	       <td><input type="submit" name="action" value="Registrar" /></td>
+      </tr>
+        
+    </table>
+    
+    
+    <table  class="resultados" border="0" style="align-self: center;">
+	    <thead>
+	      <tr>
+	        <th ><label th:text="#{persona.dni}" /></th>
+	        <th ><label th:text="#{persona.nombre}" /></th>
+	        <th ><label th:text="#{persona.apellido}" /></th>
+	        <th ><label th:text="#{persona.f.nac}" /></th>
+	        <th ><label th:text="#{persona.ciudad}" /></th>
+	        <th ><label th:text="Opciones" /></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="p : ${resultados}">
+			    <td th:text="${{p.dni}}"></td>
+		        <td th:text="${{p.nombre}}"></td>
+		        <td th:text="${{p.apellido}}"></td>
+		        <td th:text="${{p.fechaNacimiento}}" ></td>
+		        <td th:text="${{p.ciudad.nombre}}" ></td>
+		        <td>
+                    <a th:href="@{/personasEditar/{id}(id=${p.dni})}" class="btn btn-primary">
+                        editar
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/personasEditar/delete/{id}(id=${p.dni})}" class="btn btn-primary">
+                        eliminar
+                    </a>
+                </td>
+		        
+	      </tr>
+	    </tbody>
+    </table>
+</form>
+</body>
+</html>	

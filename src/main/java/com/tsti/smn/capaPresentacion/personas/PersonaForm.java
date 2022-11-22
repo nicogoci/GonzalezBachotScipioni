@@ -35,6 +35,7 @@ public class PersonaForm {
 	public PersonaForm() {
 		super();
 	}
+	
 	public PersonaForm(Persona p) {
 		super();
 		this.nombre=p.getNombre();

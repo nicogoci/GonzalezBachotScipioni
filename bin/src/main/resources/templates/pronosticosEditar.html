@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title><span th:text="#{pronostico.editar.titulo}"></span></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="fechaPronostico"]'); 
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+<body>
+
+	<div class="starter-template">
+        <h1><span  th:text="#{empresa}" /></h1>
+         <h2 th:text="${formBean.idPronostico} ? #{pronostico.buscar.titulo}: #{pronostico.editar.titulo}" />
+    </div>
+    
+<form  th:action="@{/pronosticoEditar}" th:object="${formBean}" method="post">
+	<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+	<table border="0" style="align-self: center;">
+        <tr>
+            <td><label th:text="#{pronostico.porcentajeLluvia}" /></td>
+            <td><input type="number" th:field="*{porcentajeLLuvia}" /></td>
+            <td> <p th:if="${#fields.hasErrors('porcentajeLLuvia')}" th:errorclass="error" th:errors="*{porcentajeLLuvia}" /> </td>
+            <!-- <td> 
+	             <ul>
+			        <li th:each="err : ${#fields.errors('dni')}" th:text="${err}" class="error" />
+			    </ul> 
+		   	</td>-->
+        </tr>
+        <tr>
+            <td><label th:text="#{pronostico.cantidadLluvia}" /></td>
+            <td><input type="number" th:field="*{cantidadLLuvia}" /></td> 
+            <td> <p th:if="${#fields.hasErrors('cantidadLLuvia')}" th:errorclass="error" th:errors="*{cantidadLLuvia}" /> </td> 
+        </tr>
+        <tr>
+            <td><label th:text="#{pronostico.descripcion}" /></td>
+            <td><input type="text" th:field="*{descripcion}" /></td> 
+            <td> <p th:if="${#fields.hasErrors('descripcion')}" th:errorclass="error" th:errors="*{descripcion}" /> </td> 
+        </tr>
+        <tr>
+            <td><label th:text="#{pronostico.fechaPronostico}" /></td>
+            <td><input type="text" id="fechaPronostico" autocomplete="off" th:field="*{fechaPronostico}" placeholder="DD/MM/YYYY" /></td> 
+            <td> <p th:if="${#fields.hasErrors('fechaPronostico')}" th:errorclass="error" th:errors="*{fechaPronostico}" /> </td> 
+        </tr>
+        <tr>
+            <td><label th:text="#{pronostico.ciudad}" /></td>
+            <td>
+		        <select th:field="*{idCiudad}">
+				  <option th:each="c : ${allCiudades}" 
+				          th:value="${c.id}" 
+				          th:text="${c.nombre}"></option>
+				</select>
+			</td>
+		</tr>
+        
+         
+  </table>
+  <table class="botones">
+      <tr>
+	      <td><input type="submit" name="action" value="Aceptar" /></td>
+	      <td><input type="submit" name="action" value="Cancelar" /></td>
+      </tr>
+    </table>
+</form>
+</body>
+</html>	

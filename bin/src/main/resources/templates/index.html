@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+	
+    
+   <div class="starter-template">
+        <h1>Ejemplo Spring Boot Web Thymeleaf </h1>
+        <h2>
+            <span th:text="'Bienvenido'"></span>
+        </h2>
+    </div>
+    <a th:href="personasBuscar">Buscar Personas</a>
+    <a th:href="personasEditar">Registrar Persona</a>
+    <a th:href="ciudadesBuscar">Buscar Ciudades</a>
+    <a th:href="ciudadEditar">Registrar Ciudad</a>
+	<a th:href="pronosticoEditar">Registrar Pronostico</a>
+	<a th:href="pronosticosBuscar">Mostrar Pronosticos</a>
+  </body>
+</html>

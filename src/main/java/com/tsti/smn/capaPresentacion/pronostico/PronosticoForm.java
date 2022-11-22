@@ -118,9 +118,11 @@ public class PronosticoForm {
 		
 		return p;
 	}
+	
 	public Date getFechaPronostico() {
 		return fechaPronostico;
 	}
+	
 	public void setFechaPronostico(Date fechaPronostico) {
 		this.fechaPronostico = fechaPronostico;
 	}
