@@ -2,11 +2,18 @@ package com.tsti.smn.capaPresentacion.alerta;
 
 
 
+
+
+
 import java.time.LocalDate;
+
+
 import java.time.ZoneId;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +65,7 @@ public class AlertaRegistrarController {
 		     
 
 		    @RequestMapping( method=RequestMethod.POST)
-		    public String submit(@ModelAttribute("formBean") /*@Valid*/  AlertaForm formBean,BindingResult result, ModelMap modelo,@RequestParam String action) throws Exception {
+		    public String submit(@ModelAttribute("formBean") @Valid  AlertaForm formBean,BindingResult result, ModelMap modelo,@RequestParam String action) throws Exception {
 		    	
 		    	
 		    	if(action.equals("Aceptar"))
@@ -92,11 +99,11 @@ public class AlertaRegistrarController {
 		    				System.out.println(persona.getMail());
 		    			}
 		    			
-		    			return "redirect:/alertaMetereologica";
+
 		    			
 		    		}
 		    		
-		    		
+	    			return "alertaMetereologica";	
 		        	
 		        	
 		    	}

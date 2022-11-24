@@ -2,7 +2,7 @@ package com.tsti.smn.capaPresentacion.personas;
 
 import java.util.Date;
 
-
+import javax.validation.constraints.Email;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,6 +30,7 @@ public class PersonaForm {
 	private Date fechaNacimiento;
 //	@NotNull
 //	@size(min=8, max=30)
+//	@Email
 	private String mail;
 	
 	public PersonaForm() {

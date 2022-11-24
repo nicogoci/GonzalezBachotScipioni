@@ -1,18 +1,19 @@
 package com.tsti.smn.capaPresentacion.alerta;
 
-import java.util.Date;
-
 import com.tsti.smn.pojos.Alerta;
-import com.tsti.smn.pojos.Ciudad;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class AlertaForm {
-	
+
 	private Long idAlerta;
 	
+	@NotNull(message="La ciudad no puede ser nula")
 	private Long idCiudad;
-	
+	@NotNull(message="Debe ingresar el dia de la alerta")	
 	private String fechaAlerta;
-	
+	@NotNull(message="Debe ingresar una descripción para la alerta")
+	@Size(min=10, max=500, message="La descripción debe tener entre 10 y 500 caracteres")
 	private String descripcion;
 	
 
@@ -23,7 +24,6 @@ public class AlertaForm {
 	public AlertaForm(Alerta a) {
 	
 		super();
-	
 		this.idAlerta=a.getidAlerta();
 		this.idCiudad=a.getCiudad().getId();
 		this.descripcion=a.getDescripcion();

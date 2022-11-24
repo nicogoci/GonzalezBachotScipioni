@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <title th:text="#{alerta.meteorologica.titulo}"></title>
+    <title th:text="#{titulo.alerta}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
@@ -14,7 +14,9 @@
 
 	<div class="starter-template">
         <h1><span  th:text="#{empresa}" /></h1>
-        <h2 th:text="#{alerta.meteorologica.titulo}" />
+        <h2>
+            <span th:text="#{alerta.metereologica.titulo}"></span>
+        </h2>
     </div>
     
 <form  th:action="@{/alertaMetereologica}" th:object="${formBean}" method="post">
@@ -22,9 +24,11 @@
 	<table border="0" style="align-self: center;">
         <tr>
             <td><label th:text="#{pronostico.fechaPronostico}" /></td>
+ 
             <td>
             <div class="form-check">
   				<input class="form-check-input" type="radio" name="flexRadioDefault" id="alertaHoy" th:field="*{fechaAlerta}" value="Hoy">
+
   					<label class="form-check-label" for="alertaHoy">
     					Hoy
   					</label>
@@ -35,14 +39,14 @@
     					Mañana
   					</label>
 			</div>
+			  			<td> <p th:if="${#fields.hasErrors('fechaAlerta')}" th:errorclass="error" th:errors="*{fechaAlerta}" /> </td>
             </td>
- <!--           <td><input type="text" id="fechaPronostico" autocomplete="off" th:field="*{fechaPronostico}" placeholder="DD/MM/YYYY" /></td> -->  
-<!--            <td> <p th:if="${#fields.hasErrors('fechaPronostico')}" th:errorclass="error" th:errors="*{fechaPronostico}" /> </td> --> 
         </tr>
         <tr>
             <td><label th:text="#{alerta.descripcion}" /></td>
-            <td><input type="text" th:field="*{descripcion}" /></td> 
+            <td><input type="text" th:field="*{descripcion}" width="200%"/></td> 
             <td> <p th:if="${#fields.hasErrors('descripcion')}" th:errorclass="error" th:errors="*{descripcion}" /> </td> 
+
         </tr>
 
         <tr>
@@ -64,21 +68,16 @@
 	      <td><input type="submit" name="action" value="Cancelar" /></td>
       </tr>
     </table>
+        <caption>Usuarios alertados:</caption>
         <table  class="resultados" border="0" style="align-self: center;">
+
 	    <thead>
-	      <tr>
-	        <th ><label th:text="#{persona.nombre}" /></th>
-	        <th ><label th:text="#{persona.apellido}" /></th>
-	        <th ><label th:text="#{persona.ciudad}" /></th>
-	        <th ><label th:text="#{persona.mail}" /></th>
-	        <th ><label th:text="Opciones" /></th>
-	      </tr>
+
 	    </thead>
 	    <tbody>
 	      <tr th:each="p : ${resultados}">
-		        <td th:text="${{p.nombre}}"></td>
-		        <td th:text="${{p.apellido}}"></td>
-		        <td th:text="${{p.ciudad.nombre}}" ></td>
+		        <td th:text="${{p.nombre}} "></td>
+		        <td th:text="${{p.apellido}} "></td>
 		        <td th:text="${{p.mail}}" ></td>
 	        
 	      </tr>
