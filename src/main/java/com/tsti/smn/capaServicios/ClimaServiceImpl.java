@@ -1,14 +1,10 @@
 package com.tsti.smn.capaServicios;
 
-import java.time.Instant;
-import java.util.Date;
 
-
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.tsti.smn.capaDaos.IClimaRepo;
-import com.tsti.smn.capaPresentacion.clima.ClimaBuscarForm;
 import com.tsti.smn.pojos.Clima;
 
 
@@ -21,9 +17,7 @@ public class ClimaServiceImpl implements ClimaService{
 	
 	@Override
 	public Clima getClimaByCiudad(Long idCiudad) throws Exception {
-
-		
-		Clima c = repo.findByCiudadAndFecha(idCiudad, Date.from(Instant.now()));
+		Clima c = repo.findByCiudadAndFecha(idCiudad, LocalDate.now());
 		
 		if(c!=null) {
 			return c;
@@ -34,23 +28,33 @@ public class ClimaServiceImpl implements ClimaService{
 	
 	
 	
-	
 	@Override
 	public void save(Clima clima) {
 		repo.save(clima);
 		
 	}
 	
-	@Override
-	public Clima clima(ClimaBuscarForm clima) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public Clima getClimaById(Long idClima) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(repo.findById(idClima).isPresent())
+		return repo.findById(idClima).get();
+		else {
+			throw new Exception ("El registro no existe");
+		}
+	}
+
+
+
+	@Override
+	public void saveOrUpdate(Clima clima) {		
+		
+		if (repo.findByCiudadAndFecha(clima.getCiudad().getId(), clima.getFecha()) != null) {
+			repo.updateClima(clima.getTemperatura(), clima.getEstado().getId(), clima.getPorcentajeHumedad(), clima.getFecha(), clima.getCiudad().getId());
+		}else {
+			save(clima);
+		}
 	}
 
 

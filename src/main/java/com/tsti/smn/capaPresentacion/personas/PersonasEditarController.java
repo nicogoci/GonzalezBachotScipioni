@@ -69,8 +69,7 @@ public class PersonasEditarController {
 //            result.addError(error);
             
     		if(result.hasErrors())
-    		{
-    			
+    		{  			
                 
     			modelo.addAttribute("formBean",formBean);
     			 return "personasEditar";
@@ -83,9 +82,7 @@ public class PersonasEditarController {
     			
     			return "redirect:/personasBuscar";
     		}
-
-    		
-        	
+    	
         	
     	}
     

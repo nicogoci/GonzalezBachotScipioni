@@ -1,23 +1,37 @@
 package com.tsti.smn.capaPresentacion.clima;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 import com.tsti.smn.pojos.Clima;
-import com.tsti.smn.pojos.Pronostico;
+
 
 public class ClimaForm {
 	
-	private long idClima;
 	
-	private Date fecha;
+	private Long idClima;
 	
+	private LocalDate fecha;
+	
+	
+	@NotNull (message = "Debe ingresar La temperatura")
 	private int temperatura;
 	
-	private String estado;
+	@NotNull (message = "Debe ingresar el estado del clima")
+	private Long idEstado;
 	
+	@NotNull (message = "Debe ingresar el porcentaje de humedad")
+	@Min(value=0, message = "El porcentaje de humedad debe ser mayor o igual a 0")
+	@Max(value=100, message = "El porcentaje de humedad debe menor a 100")
 	private int porcentajeHumedad;
 	
-	private long idCiudad;
+	@NotNull (message = "Debe ingresar una ciudad")
+	private Long idCiudad;
 	
 	
 	public ClimaForm() {
@@ -27,26 +41,26 @@ public class ClimaForm {
 	public ClimaForm(Clima c) {
 		super();
 		this.idClima = c.getIdClima();
-		this.fecha = c.getFecha();
+		this.fecha = LocalDate.now();
 		this.temperatura = c.getTemperatura();
-		this.estado = c.getEstado();
+		this.idEstado = c.getEstado().getId();
 		this.porcentajeHumedad = c.getPorcentajeHumedad();
 		this.idCiudad = c.getCiudad().getId();
 	}
 
-	public long getIdClima() {
+	public Long getIdClima() {
 		return idClima;
 	}
 
-	public void setIdClima(long idClima) {
+	public void setIdClima(Long idClima) {
 		this.idClima = idClima;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -58,12 +72,12 @@ public class ClimaForm {
 		this.temperatura = temperatura;
 	}
 
-	public String getEstado() {
-		return estado;
+	public Long getEstado() {
+		return idEstado;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstado(Long estado) {
+		this.idEstado = estado;
 	}
 
 	public int getPorcentajeHumedad() {
@@ -74,11 +88,11 @@ public class ClimaForm {
 		this.porcentajeHumedad = porcentajeHumedad;
 	}
 
-	public long getIdCiudad() {
+	public Long getIdCiudad() {
 		return idCiudad;
 	}
 
-	public void setIdCiudad(long idCiudad) {
+	public void setIdCiudad(Long idCiudad) {
 		this.idCiudad = idCiudad;
 	}	
 	
@@ -86,9 +100,8 @@ public class ClimaForm {
 	{
 		Clima c = new Clima();
 		c.setIdClima(this.idClima);
-		c.setFecha(this.getFecha());
+		c.setFecha(LocalDate.now());
 		c.setTemperatura(this.getTemperatura());
-		c.setEstado(this.getEstado());
 		c.setPorcentajeHumedad(this.getPorcentajeHumedad());
 		return c;
 	}

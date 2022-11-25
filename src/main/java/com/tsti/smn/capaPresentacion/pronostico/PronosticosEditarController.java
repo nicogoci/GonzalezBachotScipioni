@@ -73,9 +73,6 @@ public class PronosticosEditarController {
     			
     			return "redirect:/pronosticoEditar";
     		}
-
-    		
-        	
         	
     	}
     

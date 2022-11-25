@@ -37,7 +37,5 @@ public class Ciudad {
 	}
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
-	}
-	
-	
+	}		
 }

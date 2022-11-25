@@ -22,16 +22,13 @@
 		           <td><label th:text="#{clima.ciudad}" /></td>
 		           <td>
 			        <select th:field="*{idCiudadSeleccionada}">
-						<option selected th:value="null" text="" ></option>
+					<option th:value="null" text="Seleccione una opción"></option>
 					    <option th:each="c : ${allCiudades}" 
 					          th:value="${c.id}" 
 					          th:text="${c.nombre}"></option>
 					</select>
 				</td>
-			</tr>
-
-
-			
+			</tr>			
 		</table>
 
 		  <table class="botones">
@@ -48,11 +45,10 @@
 			    <thead>
 			      <tr>
 			        <th ><label th:text="#{clima.fecha}" /></th>
-			        <th ><label th:text="#{clima.ciudad.nombre}" /></th>
+			        <th ><label th:text="#{clima.ciudad}" /></th>
 			        <th ><label th:text="#{clima.temperatura}" /></th>
-			        <th ><label th:text="#{clima.estadoClima}" /></th>
+			        <th ><label th:text="#{clima.estado}" /></th>
 			        <th ><label th:text="#{clima.porcentajeHumedad}" /></th>
-			   
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -60,9 +56,9 @@
 				        <td th:text="${{p.fecha}}"></td>
 				        <td th:text="${{p.ciudad.nombre}}" ></td>
 				        <td th:text="${{p.temperatura}}"></td>
-				       	<td th:text="${{p.estadoClima}}"></td>
+				       	<td th:text="${{p.estado.nombre}}"></td>
 				        <td th:text="${{p.porcentajeHumedad}}" ></td>
-				       
+				      	<td>
 		                    <a th:href="@{/climaEditar/{id}(id=${p.idClima})}" class="btn btn-primary">
 		                        editar
 		                    </a>

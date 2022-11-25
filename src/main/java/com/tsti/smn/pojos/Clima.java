@@ -1,7 +1,7 @@
 package com.tsti.smn.pojos;
 
-import java.util.Date;
-
+import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,16 +13,22 @@ public class Clima {
  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idClima;
+	private Long idClima;
 	
-	private Date fecha;
+	@Column(nullable=false)
+	private LocalDate fecha;
 	
+	@Column(nullable=false)
 	private int temperatura;
 	
-	private String estado;
 	
+	@ManyToOne
+	private Estado estado;
+	
+	@Column(nullable=false)
 	private int porcentajeHumedad;
 	
+
 	@ManyToOne
 	private Ciudad ciudad;
 	
@@ -30,15 +36,15 @@ public class Clima {
 
 	@Override
 	public String toString() {
-		return "Clima:  fecha=" + fecha + ", ciudad=" + ciudad +", temperatura=" + temperatura + ", estado="
-				+ estado + ", porcentaje de humedad=" + porcentajeHumedad;
+		return "Clima:  fecha=" + fecha + ", ciudad=" + ciudad.getNombre() +", temperatura=" + temperatura + ", estado="
+				+ estado.getNombre() + ", porcentaje de humedad=" + porcentajeHumedad;
 	}
 
-	public long getIdClima() {
+	public Long getIdClima() {
 		return idClima;
 	}
 
-	public void setIdClima(long idClima) {
+	public void setIdClima(Long idClima) {
 		this.idClima = idClima;
 	}
 
@@ -50,11 +56,12 @@ public class Clima {
 		this.temperatura = temperatura;
 	}
 
-	public String getEstado() {
+
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
@@ -74,13 +81,13 @@ public class Clima {
 		this.ciudad = ciudad;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
-	}	 
+	}
 	
 	
 }

@@ -27,8 +27,7 @@
          <tr>
             <td><label th:text="#{ciudad.provincia}" /></td>
             <td>
-		        <select th:field="*{provinciaSeleccionada}">
-				  <option th:value="null" text="Seleccione una opción"></option>
+		        <select th:field="*{provinciaSeleccionada}">		
 				  <option th:each="p : ${allProvincias}" 
 				          th:value="${p.id}" 
 				          th:text="${p.nombre}"></option>

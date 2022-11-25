@@ -3,14 +3,14 @@ package com.tsti.smn.capaPresentacion.clima;
 
 public class ClimaBuscarForm {
 	
-	private long idCiudad;
+	private Long idCiudadSeleccionada;
 
-	public long getIdCiudad() {
-		return idCiudad;
+	public Long getIdCiudadSeleccionada() {
+		return idCiudadSeleccionada;
 	}
 
-	public void setIdCiudad(long idCiudad) {
-		this.idCiudad = idCiudad;
+	public void setIdCiudadSeleccionada(Long idCiudad) {
+		this.idCiudadSeleccionada = idCiudad;
 	}
 	
 

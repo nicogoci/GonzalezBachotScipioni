@@ -40,7 +40,7 @@
             <td><label th:text="#{clima.ciudad}" /></td>
             <td>
 		        <select th:field="*{idCiudad}">
-				  <option th:each="c : ${allCiudades}" 
+				  <option  th:each="c : ${allCiudades}" 
 				          th:value="${c.id}" 
 				          th:text="${c.nombre}"></option>
 				</select>
@@ -57,7 +57,6 @@
             <td><label th:text="#{clima.estado}" /></td>
             <td>
 		       <select th:field="*{estado}">
-		          
 				  <option th:each="c : ${allEstados}" 
 				          th:value="${c.id}" 
 				          th:text="${c.nombre}"></option>

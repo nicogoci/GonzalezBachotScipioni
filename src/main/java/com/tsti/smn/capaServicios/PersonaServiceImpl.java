@@ -19,12 +19,13 @@ public class PersonaServiceImpl implements PersonaService {
 	@Autowired
 	IPersonaRepo repo;
 	
+	
 	@Override
 	public List<Persona> getAll() {
-
 		return repo.findAll();
 	}
 
+	
 	@Override
 	public List<Persona> filter(PersonasBuscarForm filter) {
 
@@ -32,21 +33,18 @@ public class PersonaServiceImpl implements PersonaService {
 			return repo.findAll();
 		else
 			return repo.findByNombreOrDni(filter.getNombre(),filter.getDni());
-		
-		
-		
 	}
 
+	
 	@Override
 	public void save(Persona persona) {
 		repo.save(persona);
-		
 	}
 
+	
 	@Override
 	public Persona getPersonaById(Long idPersona) throws Exception {
 
-		
 		Optional<Persona> p = repo.findById(idPersona);
 		
 		if(p!=null) {
@@ -56,12 +54,13 @@ public class PersonaServiceImpl implements PersonaService {
 		}
 	}
 
+	
 	@Override
 	public void deletePersonaByid(Long id) {
 		repo.deleteById(id);
-		
 	}
 
+	
 	@Override
 	public List<Persona> getPersonaByIdCiudad(Long idCiudad) throws Exception {
 		return repo.findByCiudadId(idCiudad);
