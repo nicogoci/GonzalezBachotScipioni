@@ -92,7 +92,7 @@ public class ClimaEditarController {
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
-    		return "redirect:/climaBuscar";
+    		return "redirect:/";
     	}
     		
     	return "redirect:/";

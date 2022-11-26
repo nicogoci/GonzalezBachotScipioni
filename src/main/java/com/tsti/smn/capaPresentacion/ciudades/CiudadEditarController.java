@@ -90,7 +90,7 @@ public class CiudadEditarController {
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
-    		return "redirect:/ciudadesBuscar";
+    		return "redirect:/";
     	}
     		
     	return "redirect:/";
