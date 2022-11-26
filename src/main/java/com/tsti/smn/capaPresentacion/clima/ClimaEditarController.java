@@ -44,7 +44,7 @@ public class ClimaEditarController {
  
 	       modelo.addAttribute("formBean",new ClimaForm());
 		}
-       return "climaUpdate";
+       return "climaEditar";
     }
 	
 	 @ModelAttribute("allCiudades")
@@ -56,11 +56,6 @@ public class ClimaEditarController {
 	    public List<Estado> getAllEstados() {
 	        return this.serviceEstado.findAll();
 	    }
-	    
-	   // @ModelAttribute("ciudad")
-	   // public Ciudad ciudad(Long id) {
-	     //   return this.serviceCiudad.getById(id);
-	    //}
 	    	
  
     @RequestMapping( method=RequestMethod.POST)
@@ -92,7 +87,7 @@ public class ClimaEditarController {
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
-    		return "redirect:/climaBuscar";
+    		return "redirect:/";
     	}
     		
     	return "redirect:/";

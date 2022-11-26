@@ -2,11 +2,14 @@ package com.tsti.smn.capaPresentacion.clima;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tsti.smn.capaServicios.CiudadService;
 import com.tsti.smn.capaServicios.ClimaServiceImpl;
 import com.tsti.smn.capaServicios.EstadoService;
+import com.tsti.smn.excepciones.Excepcion;
 import com.tsti.smn.pojos.Ciudad;
 import com.tsti.smn.pojos.Clima;
 import com.tsti.smn.pojos.Estado;
@@ -49,15 +53,32 @@ public class ClimaBuscarController {
 	    
 	    
 	    @RequestMapping( method=RequestMethod.POST)
-	    public String submit( ClimaBuscarForm formBean,BindingResult result, ModelMap modelo,@RequestParam String action) throws Exception {
+	    public String submit( @ModelAttribute("formBean") @Valid ClimaBuscarForm formBean,BindingResult result, ModelMap modelo,@RequestParam String action)  {
 	    	
-	 
+	    	
 	    	if(action.equals("Buscar"))
 	    	{
+	    		if(result.hasErrors())
+	    		{
+
+	    			modelo.addAttribute("formBean",formBean);
+	    			 return "climaEditar";
+	    		}else {
+	    		
+	    		try {
 	    		Clima clima = service.getClimaByCiudad(formBean.getIdCiudadSeleccionada());
 	        	modelo.addAttribute("formBean",formBean);
 	        	modelo.addAttribute("resultados",clima);
 	        	return "climaBuscar";
+	    		}catch(Excepcion e) {
+	    			
+	    			ObjectError error = new ObjectError("globalError", e.getMessage());
+		            result.addError(error);  
+		            modelo.addAttribute("formBean",formBean); 
+		        	return "climaBuscar";
+	    		}
+	    		  
+	    		}
 	    	}
 	    
 	    	
@@ -66,11 +87,18 @@ public class ClimaBuscarController {
 	    		modelo.clear();
 	    		return "redirect:/";
 	    	}
+	    		    	
 	    	
 	    	if(action.equals("Registrar"))
 	    	{
 	    		modelo.clear();
 	    		return "redirect:/climaEditar";
+	    	}
+	    	
+	    	if(action.equals("Pronostico extendido"))
+	    	{
+	    		modelo.clear();
+	    		return "redirect:/pronosticosBuscar";
 	    	}
 	    		
 	    	return "redirect:/";

@@ -90,7 +90,7 @@ public class PersonasEditarController {
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
-    		return "redirect:/personasBuscar";
+    		return "redirect:/";
     	}
     		
     	return "redirect:/";

@@ -16,6 +16,7 @@
         </h2>
         
 	<form  th:action="@{/climaBuscar}" th:object="${formBean}" method="post">
+	<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
 		<table border="1">
 			
 		    <tr>
@@ -36,6 +37,7 @@
 			      <td><input type="submit" name="action" value="Buscar" /></td>
 			      <td><input type="submit" name="action" value="Cancelar" /></td>
 			      <td><input type="submit" name="action" value="Registrar" /></td>
+			      <td><input type="submit" name="action" value="Pronostico extendido" /></td>
 		      </tr>
 		        
 		  </table>
@@ -49,6 +51,7 @@
 			        <th ><label th:text="#{clima.temperatura}" /></th>
 			        <th ><label th:text="#{clima.estado}" /></th>
 			        <th ><label th:text="#{clima.porcentajeHumedad}" /></th>
+			        <th ><label th:text="#{clima.editar}" /></th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -66,6 +69,7 @@
 			      </tr>
 			    </tbody>
 		    </table>
+		    
 		</form>
 	</div>
 </body>

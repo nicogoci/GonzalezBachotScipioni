@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tsti.smn.capaDaos.IClimaRepo;
+import com.tsti.smn.excepciones.Excepcion;
 import com.tsti.smn.pojos.Clima;
 
 
@@ -16,13 +17,13 @@ public class ClimaServiceImpl implements ClimaService{
 	IClimaRepo repo;
 	
 	@Override
-	public Clima getClimaByCiudad(Long idCiudad) throws Exception {
+	public Clima getClimaByCiudad(Long idCiudad) throws Excepcion {
 		Clima c = repo.findByCiudadAndFecha(idCiudad, LocalDate.now());
 		
 		if(c!=null) {
 			return c;
 		} else {
-			throw new Exception("No existe reporte");
+			throw new Excepcion("No existe reporte");
 		}
 	}
 	
@@ -37,11 +38,11 @@ public class ClimaServiceImpl implements ClimaService{
 
 
 	@Override
-	public Clima getClimaById(Long idClima) throws Exception {
+	public Clima getClimaById(Long idClima) throws Exception{
 		if(repo.findById(idClima).isPresent())
 		return repo.findById(idClima).get();
 		else {
-			throw new Exception ("El registro no existe");
+			throw new Exception("El registro no existe");
 		}
 	}
 
